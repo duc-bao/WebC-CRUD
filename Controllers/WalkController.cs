@@ -30,9 +30,10 @@ namespace WebC_CRUD.Controllers
             return Ok(mapper.Map<WalkDTO>(walk));
 
         }
+        // Get: "/api/Walk?filterOn=Name&filerQuery=Track
         [HttpGet]
-        public async Task<IActionResult> GetAll() {
-            var walks = await walkRepository.GetAllAsync();
+        public async Task<IActionResult> GetAll([FromQuery] string? filterOn ,string?  filterQuery) {
+            var walks = await walkRepository.GetAllAsync(filterOn,filterQuery);
             var walkDTO = mapper.Map<List<WalkDTO>>(walks);
             return Ok(walkDTO);
         }

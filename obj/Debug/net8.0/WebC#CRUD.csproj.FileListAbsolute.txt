@@ -135,3 +135,4 @@ D:\C#\WebC#CRUD\obj\Debug\net8.0\WebC#CRUD.pdb
 D:\C#\WebC#CRUD\obj\Debug\net8.0\WebC#CRUD.genruntimeconfig.cache
 D:\C#\WebC#CRUD\obj\Debug\net8.0\ref\WebC#CRUD.dll
 D:\C#\WebC#CRUD\bin\Debug\net8.0\AutoMapper.dll
+D:\C#\WebC#CRUD\obj\Debug\net8.0\WebC#CRUD.sourcelink.json

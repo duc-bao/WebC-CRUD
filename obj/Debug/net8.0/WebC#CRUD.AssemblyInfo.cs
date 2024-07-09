@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebC#CRUD")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56732667a146cd87fc88329fb0de9d677b27eb96")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebC#CRUD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebC#CRUD")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

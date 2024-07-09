@@ -20,7 +20,10 @@ namespace WebC_CRUD.Mapping
             CreateMap<UpdateWalkRequest, Walk>().ReverseMap();
             // Difficult
             CreateMap<Difficulty, DifficultyDTO>().ReverseMap();
-
+            // Mapping without Ignore loại bỏ ko ánh xạ đối với trường Difficulty 
+            //CreateMap<Walk, WalkDTO>()
+            //    .ForMember(n => n.Difficulty, otp => otp.Ignore())
+            //    .ReverseMap();
            
         }
     }

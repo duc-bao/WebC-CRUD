@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WebC_CRUD.CustomActionFilter;
 using WebC_CRUD.Data;
 using WebC_CRUD.Mapping;
 using WebC_CRUD.Model.DTO.Request;
@@ -23,6 +24,7 @@ namespace WebC_CRUD.Controllers
             this.iRepository = repository;  
             this.mapper = mapper;
         }
+       
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -45,14 +47,17 @@ namespace WebC_CRUD.Controllers
         }
 
         [HttpPost]
+        [ValidateModel]
         public async Task<IActionResult> Create([FromBody] AddRegionRequest addRegionRequest)
         {
-            // convert DTO to Entity
-            var regionModel = mapper.Map<Region>(addRegionRequest);
-            regionModel = await  iRepository.CreateRegion(regionModel);
-            // Map domain model to DTO
-            var regionDTO = mapper.Map<RegionDTO>(regionModel);
-            return CreatedAtAction(nameof(GetById), new {id = regionDTO.Id}, regionDTO);
+           
+                // convert DTO to Entity
+                var regionModel = mapper.Map<Region>(addRegionRequest);
+                regionModel = await iRepository.CreateRegion(regionModel);
+                // Map domain model to DTO
+                var regionDTO = mapper.Map<RegionDTO>(regionModel);
+                return CreatedAtAction(nameof(GetById), new { id = regionDTO.Id }, regionDTO);
+       
         }
         [HttpPut]
         [Route("{id:guid}")]
