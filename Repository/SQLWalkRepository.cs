@@ -32,7 +32,9 @@ namespace WebC_CRUD.Repository
 
         }
 
-        public async Task<List<Walk>> GetAllAsync(string? filterOn = null, string? filterQuery = null ) 
+        public async Task<List<Walk>> GetAllAsync(string? filterOn = null, string? filterQuery = null
+            ,string? sortBy = null, bool isAccending = true, int pageNumber = 1, int pageSize = 10
+            )  
         {
             var walk =  applicationDbContext.Walks.Include("Difficulty").Include("Region").AsQueryable();
             // Filtering
@@ -41,7 +43,20 @@ namespace WebC_CRUD.Repository
                     walk = walk.Where(x => x.Name.Contains(filterQuery));
                 }
             }
-            return await walk.ToListAsync();
+
+            //Sorting
+            if(string.IsNullOrWhiteSpace(sortBy) == false){
+                if (sortBy.Equals("Name", StringComparison.OrdinalIgnoreCase)) { 
+                walk = isAccending ? walk.OrderBy(x => x.Name) : walk.OrderByDescending(x =>x.Name);
+                }else if (sortBy.Equals("Length", StringComparison.OrdinalIgnoreCase))
+                {
+                    walk = isAccending ? walk.OrderBy(x => x.LengthKm):walk.OrderByDescending(x => x.LengthKm);
+                }
+            }
+
+            // Pagination
+            var skipResult = (pageNumber - 1) *pageSize;
+            return await walk.Skip(skipResult).Take(pageSize).ToListAsync();
             //return await applicationDbContext.Walks.Include("Difficulty").Include("Region").ToListAsync();
         }
 
