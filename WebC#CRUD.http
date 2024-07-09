@@ -1,0 +1,6 @@
+@WebC_CRUD_HostAddress = http://localhost:5005
+
+GET {{WebC_CRUD_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
